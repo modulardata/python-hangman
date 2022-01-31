@@ -1,6 +1,6 @@
-from Hangman.task.hangman.enums import GameState
-from Hangman.task.hangman.model import HangManModel
-from Hangman.task.hangman.view import HangManView
+from enums import GameState
+from model import HangManModel
+from view import HangManView
 
 
 class HangManController:
@@ -45,8 +45,10 @@ class HangManController:
         return menu_option
 
     def _run_game_loop(self):
-        while not self.model.has_word_been_guessed() and \
-          self.model.get_attempt_count() < self.model.MAX_ATTEMPTS:
+        while (
+            not self.model.has_word_been_guessed()
+            and self.model.get_attempt_count() < self.model.MAX_ATTEMPTS
+        ):
 
             self.view.show_message("")
             guessed_word = self.model.get_guessed_word()

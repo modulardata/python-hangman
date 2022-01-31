@@ -1,4 +1,3 @@
-
 class HangManView:
     @staticmethod
     def prompt_for_letter() -> str:

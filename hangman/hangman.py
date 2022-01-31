@@ -1,6 +1,6 @@
-from Hangman.task.hangman.controller import HangManController
-from Hangman.task.hangman.model import HangManModel
-from Hangman.task.hangman.view import HangManView
+from controller import HangManController
+from model import HangManModel
+from view import HangManView
 
 model = HangManModel()
 view = HangManView()
