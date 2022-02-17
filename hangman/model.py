@@ -29,9 +29,8 @@ class HangManModel:
         self._attempt_count += 1
 
     def _find_indices_of_letter_in_word(self, letter: str) -> List[int]:
-        indices = [index for index, char in enumerate(self._word)
+        return [index for index, char in enumerate(self._word)
                    if letter == char]
-        return indices
 
     def _add_letter_at_indices(self, letter: str, indices: List[int]) -> str:
         guessed_word_list = list(self._guessed_word)
@@ -61,14 +60,13 @@ class HangManModel:
 
         relevant_indices = self._find_indices_of_letter_in_word(letter)
 
-        if len(relevant_indices) > 0 and self._guessed_word != self._word:
-            self._guessed_word = self._add_letter_at_indices(
-                letter,
-                relevant_indices
-            )
-            return True
-        else:
+        if len(relevant_indices) <= 0 or self._guessed_word == self._word:
             return len(relevant_indices) > 0
+        self._guessed_word = self._add_letter_at_indices(
+            letter,
+            relevant_indices
+        )
+        return True
 
     def has_letter_already_been_guessed(self, letter: str) -> bool:
         return letter in self._guessed_letters
